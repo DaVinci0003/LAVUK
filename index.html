@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="X için günlük sayaç">
+  <title>X Gün Sayacı</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">X</div>
+      <div class="brand-copy">
+        
+        <h1 id="title">X Gün Sayacı</h1>
+      </div>
+      <button class="icon-button" id="editOpen" aria-label="Hedef adını ayarla" title="Ayarlar">⚙</button>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">BUGÜNKÜ DURUM</p>
+      <h2 id="statusHeading">Bugün yazmadın.</h2>
+      <p class="muted" id="statusSub">Seriyi korumak için devam et.</p>
+    </section>
+
+    <section class="counter-card" aria-live="polite">
+      <div class="counter-label">ÜST ÜSTE GÜN</div>
+      <div class="counter-line"><span id="count">0</span><span class="counter-unit">gün</span></div>
+      <div class="progress-track"><div id="progress" class="progress-fill"></div></div>
+      <p class="counter-foot" id="recordText">Yeni bir seri başlatabilirsin.</p>
+    </section>
+
+    <section class="actions">
+      <button class="primary-button" id="didNotButton">
+        <span class="button-dot green"></span>
+        <span><strong>Bugün yazmadım</strong><small>Sayacı bir gün artır</small></span>
+        <span class="button-arrow">→</span>
+      </button>
+      <button class="danger-button" id="didButton">
+        <span class="button-dot red"></span>
+        <span><strong>Bugün yazdım</strong><small>Seriyi sıfırla</small></span>
+      </button>
+      <p class="hint" id="actionHint">Her gün yalnızca bir seçim yapabilirsin.</p>
+    </section>
+
+    <section class="stats-row">
+      <div class="stat"><span class="stat-label">EN UZUN SERİ</span><strong id="best">0 gün</strong></div>
+      <div class="stat"><span class="stat-label">TOPLAM GÜN</span><strong id="total">0</strong></div>
+    </section>
+
+    <footer>Verilerin bu cihazda saklanır.</footer>
+  </main>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" id="settingsForm">
+      <div class="dialog-head">
+        <div><p class="eyebrow">AYARLAR</p><h2>Hedefini düzenle</h2></div>
+        <button class="close-button" value="cancel" aria-label="Kapat">×</button>
+      </div>
+      <label for="targetName">İsim</label>
+      <input id="targetName" maxlength="40" placeholder="Örn. X'e yazmak" required>
+      <p class="dialog-note">İsim, bugünün seçimini yaptıktan sonra değiştirilemez. “Bugün yazdım” seçeneğiyle seriyi sıfırladığında tekrar düzenleyebilirsin.</p>
+      <button class="save-button" id="saveSettings" value="default">Kaydet</button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
